@@ -131,11 +131,11 @@
     <string name="show_4g_for_lte">Show LTE as 4G</string>
     <string name="show_4g_for_lte_desc">Show 4G icon for LTE data</string>
     <string name="tiktok_network_fix">Fix TikTok No Network</string>
-    <string name="tiktok_network_fix_desc">Domestic SIM only: ON uses random numeric ISO; OFF restores country ISO by SIM home profile.</string>
-    <string name="tiktok_network_fix_unavailable">Available only for mainland China SIMs.</string>
+    <string name="tiktok_network_fix_desc">Mainland/Hong Kong SIM: ON uses random numeric ISO; OFF restores country ISO by SIM home profile.</string>
+    <string name="tiktok_network_fix_unavailable">Available only for mainland China and Hong Kong SIMs.</string>
     <string name="extra_requires_shizuku_title">Shizuku required</string>
     <string name="region_compat_title">Region Compatibility</string>
-    <string name="region_mainland_sim">Mainland SIM</string>
+    <string name="region_mainland_sim">Mainland/HK SIM</string>
     <string name="region_tiktok_applicable">TikTok Fix</string>
     <string name="region_status_yes">Yes</string>
     <string name="region_status_no">No</string>

@@ -147,10 +147,11 @@ class MainViewModel(private val application: Application) : AndroidViewModel(app
         return SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date())
     }
 
-    private fun isChinaDomesticSim(selectedSim: SimSelection): Boolean {
+    private fun isChinaDomesticOrHkSim(selectedSim: SimSelection): Boolean {
         val iccId = selectedSim.iccId.trim()
         if (iccId.startsWith("8986")) return true
-        return normalizeMcc(selectedSim.mcc) == "460"
+        val mcc = normalizeMcc(selectedSim.mcc)
+        return mcc == "460" || mcc == "454"
     }
 
     private fun resolveIsoByMcc(mccRaw: String, fallbackIsoRaw: String): String? {
@@ -198,8 +199,8 @@ class MainViewModel(private val application: Application) : AndroidViewModel(app
             clearTikTokRandomIso(selectedSim.subId)
             return linkedIso
         }
-        // 仅国内 SIM 启用随机数字 ISO；海外 SIM 维持正常国家 ISO。
-        if (!isChinaDomesticSim(selectedSim)) {
+        // 国内 SIM（大陆/香港）启用随机数字 ISO；其他海外 SIM 维持正常国家 ISO。
+        if (!isChinaDomesticOrHkSim(selectedSim)) {
             clearTikTokRandomIso(selectedSim.subId)
             return linkedIso
         }

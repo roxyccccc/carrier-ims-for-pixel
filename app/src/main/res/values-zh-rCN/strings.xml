@@ -131,11 +131,11 @@
     <string name="show_4g_for_lte">LTE显示为4G</string>
     <string name="show_4g_for_lte_desc">LTE 网络显示为 4G 图标</string>
     <string name="tiktok_network_fix">修复 TikTok 无网络</string>
-    <string name="tiktok_network_fix_desc">仅大陆SIM有此选项，海外SIM无需修复</string>
-    <string name="tiktok_network_fix_unavailable">仅大陆 SIM 适用</string>
+    <string name="tiktok_network_fix_desc">支持大陆及香港卡：开启写入随机数字 ISO，关闭恢复运营商原始国家码</string>
+    <string name="tiktok_network_fix_unavailable">仅大陆及香港卡适用</string>
     <string name="extra_requires_shizuku_title">需要 Shizuku</string>
     <string name="region_compat_title">区域兼容状态</string>
-    <string name="region_mainland_sim">大陆 SIM</string>
+    <string name="region_mainland_sim">大陆/香港卡</string>
     <string name="region_tiktok_applicable">TikTok 修复</string>
     <string name="region_status_yes">是</string>
     <string name="region_status_no">否</string>
