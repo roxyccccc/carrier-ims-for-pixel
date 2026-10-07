@@ -2214,8 +2214,6 @@ fun SystemInfoCard(
     onCheckUpdate: () -> Unit,
     onLogcatClick: () -> Unit,
     onIssueClick: () -> Unit,
-    onDonateClick: () -> Unit,
-    showDonateButton: Boolean = true,
 ) {
     val uriHandler = LocalUriHandler.current
     val shizukuStatusText = when (shizukuStatus) {
@@ -2342,27 +2340,6 @@ fun SystemInfoCard(
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(onClick = onRequestShizukuPermission) {
                     Text(text = stringResource(id = R.string.request_permission))
-                }
-            }
-            if (showDonateButton) {
-                Spacer(modifier = Modifier.height(8.dp))
-                HorizontalDivider(thickness = 0.5.dp)
-                Spacer(modifier = Modifier.height(8.dp))
-                Button(
-                    onClick = onDonateClick,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(44.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
-                    )
-                ) {
-                    Text(
-                        text = stringResource(R.string.donation_action),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
                 }
             }
         }

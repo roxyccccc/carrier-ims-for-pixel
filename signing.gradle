@@ -1,17 +1,28 @@
 def kFile = rootProject.file('local.properties')
 def props = new Properties()
+def storeFilePath = null
+def storePassword = null
+def keyAlias = null
+def keyPassword = null
+
 if (kFile.canRead()) {
     props.load(new FileInputStream(kFile))
-
-    if (props != null) {
-        android.signingConfigs.sign.storeFile file(props['SIGN_KEY_STORE_FILE'])
-        android.signingConfigs.sign.storePassword props['SIGN_KEY_STORE_PASSWORD']
-        android.signingConfigs.sign.keyAlias props['SIGN_KEY_ALIAS']
-        android.signingConfigs.sign.keyPassword props['SIGN_KEY_PASSWORD']
-    }
+    storeFilePath = props['SIGN_KEY_STORE_FILE']
+    storePassword = props['SIGN_KEY_STORE_PASSWORD']
+    keyAlias = props['SIGN_KEY_ALIAS']
+    keyPassword = props['SIGN_KEY_PASSWORD']
 } else {
-    android.signingConfigs.sign.storeFile file(System.getenv('SIGN_KEY_STORE_FILE'))
-    android.signingConfigs.sign.storePassword System.getenv('SIGN_KEY_STORE_PASSWORD')
-    android.signingConfigs.sign.keyAlias System.getenv('SIGN_KEY_ALIAS')
-    android.signingConfigs.sign.keyPassword System.getenv('SIGN_KEY_PASSWORD')
+    storeFilePath = System.getenv('SIGN_KEY_STORE_FILE')
+    storePassword = System.getenv('SIGN_KEY_STORE_PASSWORD')
+    keyAlias = System.getenv('SIGN_KEY_ALIAS')
+    keyPassword = System.getenv('SIGN_KEY_PASSWORD')
+}
+
+if (storeFilePath) {
+    android.signingConfigs.sign.storeFile file(storeFilePath)
+    android.signingConfigs.sign.storePassword storePassword
+    android.signingConfigs.sign.keyAlias keyAlias
+    android.signingConfigs.sign.keyPassword keyPassword
+} else {
+    android.buildTypes.debug.signingConfig = android.signingConfigs.debug
 }
